@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="com.adobe.aem.guides.wknd.core.config.UserAccountDetail" immediate="true" activate="activate" modified="activate">
+  <property name="getUserName" type="String" value=""/>
+  <property name="getPassword" type="String" value=""/>
+  <property name="getMemberOf" type="String" value=""/>
+  <property name="isAdminUser" type="Boolean" value="false"/>
+  <property name="getValidity" type="Integer" value="10"/>
+  <service>
+    <provide interface="com.adobe.aem.guides.wknd.core.config.UserAccountDetail"/>
+  </service>
+  <implementation class="com.adobe.aem.guides.wknd.core.config.UserAccountDetail"/>
+</scr:component>

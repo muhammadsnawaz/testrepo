@@ -1,0 +1,145 @@
+<sly data-sly-test="${wcmmode.edit || wcmmode.design}">Configure Header Component</sly>
+<!--/* Header Starts */-->
+<div class="header-block">
+   <nav class="navbar navbar-expand-md" id="navbar">
+      <div class="container">
+         <div class="menu-icon-container">
+            <button class="nav-item button button-primary">${header.menuText}
+               <img src="${header.menudropDownImage}" /></button>
+            <div id="menu-items" class="show-dropdown">
+               <nav class="navbar">
+                  <sly data-sly-use.menuobj="com.adobe.aem.guides.wknd.core.models.NavigationModel"></sly>
+                  <ul class="navbar-nav">
+                     <sly data-sly-list.listObj="${menuobj.subNavItemsList}">
+                        <li class="nav-item">
+                           <a data-sly-test="${listObj.childPages}" href="${listObj.pageLink}">${listObj.pageTitle}</a>
+                           <a data-sly-test="${!listObj.childPages}" href="${listObj.pageLink}">${listObj.pageTitle}</a>
+                           <sly>
+                              <img src="${header.menuUpwardImage}" />
+                           </sly>
+                           <sly>
+                              <ul class="access-vyepti">
+                                 <li class="nav-sub-item">
+                                    <sly data-sly-test="${header.dropdownURL1}"
+                                       data-sly-use.dropdownURL1="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.dropdownURL1}">
+                                       <a class="nav-link" href="${dropdownURL1.linkURL}" target="_self"
+                                          data-sly-test.dropdownText1="${header.dropdownText1}">${dropdownText1}</a>
+                                    </sly>
+                                 </li>
+                                 <li class="nav-sub-item">
+                                    <sly data-sly-test="${header.dropdownURL2}"
+                                       data-sly-use.dropdownURL2="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.dropdownURL2}">
+                                       <a class="nav-link nav-resource-expand" href="${dropdownURL2.linkURL}" target="_self"
+                                          data-sly-test.dropdownText2="${header.dropdownText2}">${dropdownText2}</a>
+                                    </sly>
+                                 </li>
+                                 <li class="nav-sub-item">
+                                    <sly data-sly-test="${header.dropdownURL3}"
+                                       data-sly-use.dropdownURL3="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.dropdownURL3}">
+                                       <a class="nav-link" href="${dropdownURL3.linkURL}" target="_self"
+                                          data-sly-test.dropdownText3="${header.dropdownText3}">${dropdownText3}</a>
+                                    </sly>
+                                 </li>
+                              </ul>
+                           </sly>
+                           <sly data-sly-test="${listObj.childPages}">
+                              <div class="subnavigation js-subnav">
+                                 <sly data-sly-list.childPageDetails="${listObj.childPages}">
+                                    <div
+                                       data-sly-test="${!childPageDetails.showLink && !childPageDetails.removeFromMenu}">
+                                       <sly data-sly-test="${listObj.childPages}">
+                                          <h5>${childPageDetails.pageTitle}</h5>
+                                       </sly>
+                                       <sly data-sly-list.childPageDetail="${childPageDetails.childPages}">
+                                          <a href="${childPageDetail.pageLink}">${childPageDetail.pageTitle}</a>
+                                       </sly>
+                                    </div>
+                                    <div
+                                       data-sly-test="${!childPageDetails.showLink && childPageDetails.removeFromMenu}">
+                                       <sly data-sly-test="${listObj.childPages}">
+                                          <h5 data-sly-test="${!childPageDetails.removeFromMenu}">
+                                             ${childPageDetails.pageTitle}</h5>
+                                       </sly>
+                                       <sly data-sly-list.childPageDetail="${childPageDetails.childPages}">
+                                          <a href="${childPageDetail.pageLink}">${childPageDetail.pageTitle}</a>
+                                       </sly>
+                                    </div>
+                                    <div data-sly-test="${childPageDetails.showLink}">
+                                       <sly data-sly-test="${listObj.childPages}">
+                                          <a href="${childPageDetails.pageLink}">${childPageDetails.pageTitle}</a>
+                                       </sly>
+                                       <sly data-sly-list.childPageDetail="${childPageDetails.childPages}">
+                                          <a href="${childPageDetail.pageLink}">${childPageDetail.pageTitle}</a>
+                                       </sly>
+                                    </div>
+                                 </sly>
+                              </div>
+                           </sly>
+                        </li>
+                     </sly>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+         <div class="navbar-wrapper">
+            <div class="collapse navbar-collapse " id="navbar-collapse">
+               <ul class="navbar-nav">
+                  <li class="nav-item">
+                     <sly data-sly-test="${header.visitPatientURL}"
+                        data-sly-use.visitPatientURL="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.visitPatientURL}">
+                        <a class="nav-link" href="${visitPatientURL.linkURL}"
+                           target="${header.visitPatientNewWindow ? '_blank' : '_self'}"
+                           data-sly-test.visitPatientText="${header.visitPatientText}">${visitPatientText}</a>
+                     </sly>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <sly data-sly-test="${header.prescribingTitleURL}"
+                        data-sly-use.prescribingTitleURL="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.prescribingTitleURL}">
+                        <a class="nav-link dropdown-toggle" href="${prescribingTitleURL.linkURL}"
+                           data-sly-test.prescribingTitleText="${header.prescribingTitleText}" id="navbar-dropdown">
+                           ${prescribingTitleText}
+                           <img src="${header.dropDownImage}" />
+                        </a>
+                     </sly>
+                     <div class="dropdown-menu">
+                        <sly data-sly-test="${header.prescribingProductURL}"
+                           data-sly-use.prescribingProductLink="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.prescribingProductURL}">
+                           <a class="dropdown-item" href="${prescribingProductLink.linkURL}" target="_blank"
+                              data-sly-test.prescribingProductText="${header.prescribingProductText}">${prescribingProductText}</a>
+                        </sly>
+                        <sly data-sly-test="${header.prescribingURL}"
+                           data-sly-use.prescribingLink="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.prescribingURL}">
+                           <a class="dropdown-item" href="${prescribingLink.linkURL}" target="_blank"
+                              data-sly-test.prescribingText="${header.prescribingText}">${prescribingText}</a>
+                        </sly>
+                        <sly data-sly-test="${header.spanishURL1}"
+                           data-sly-use.spanishURL1="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.spanishURL1}">
+                           <a class="dropdown-item" href="${spanishURL1.linkURL}" target="_blank"
+                              data-sly-test.spanishText1="${header.spanishText1}">${spanishText1}</a>
+                        </sly>
+                        <sly data-sly-test="${header.spanishURL2}"
+                           data-sly-use.spanishURL2="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.spanishURL2}">
+                           <a class="dropdown-item" href="${spanishURL2.linkURL}" target="_blank"
+                              data-sly-test.spanishText2="${header.spanishText2}">${spanishText2}</a>
+                        </sly>
+                     </div>
+                  </li>
+                  <li class="nav-item">
+                     <sly data-sly-test="${header.requestarepURL}"
+                        data-sly-use.requestarepURL="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.requestarepURL}">
+                        <a class="nav-link" href="${requestarepURL.linkURL}"
+                           data-sly-test.requestarepText="${header.requestarepText}">${requestarepText}</a>
+                     </sly>
+                  </li>
+                  <li class="nav-item link-primary sign-up-link">
+                     <sly data-sly-test="${header.registerURL}"
+                        data-sly-use.registerURL="${'com.adobe.aem.guides.wknd.core.models.LinksModel' @ linkURL = header.registerURL}">
+                        <a class="button button-outline-default" href="${registerURL.linkURL}"
+                           data-sly-test.registerText="${header.registerText}">${registerText}</a>
+                     </sly>
+                  </li>
+                  <li class="main-menu"><button class="nav-item button button-primary">${header.menuText}
+                        <img src="${header.menudropDownImage}" /></button>
+         </div>
+   </nav>
+</div>

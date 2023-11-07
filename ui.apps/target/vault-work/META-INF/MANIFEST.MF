@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven
+Built-By: sabin
+Build-Jdk: 11.0.15
+Implementation-Title: WKND Sites Project - UI apps
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.adobe.aem.guides
+Content-Package-Roots: /apps/wknd,/etc/packages/adobe/cq60/core.wcm.comp
+ onents.all-2.3.2.zip,/etc/packages/adobe/cq60/core.wcm.components.examp
+ les-2.3.2.zip
+Content-Package-Description: UI apps package for WKND Sites Project
+Content-Package-Id: wknd:aem-guides-wknd.ui.apps:0.0.1-SNAPSHOT
+Content-Package-Type: mixed
+
